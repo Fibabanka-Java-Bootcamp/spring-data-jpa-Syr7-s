@@ -14,8 +14,8 @@ public class User {
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    private List<Order> orders;
+    /*@OneToMany(mappedBy = "user")
+    private List<Order> orders;*/
 
     public int getId() {
         return id;
