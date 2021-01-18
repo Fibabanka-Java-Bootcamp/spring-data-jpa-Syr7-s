@@ -1,19 +1,18 @@
-package com.hkarabakla.entities;
+package com.syrisa.entities;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-public class Category {
-
+public class User {
     @Id
     @GeneratedValue
     private int id;
 
     private String name;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.REMOVE)
-    private List<Book> books;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
 
     public int getId() {
         return id;
@@ -31,20 +30,20 @@ public class Category {
         this.name = name;
     }
 
-    public List<Book> getBooks() {
-        return books;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override
     public String toString() {
-        return "Category{" +
+        return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", books=" + books +
+                ", address=" + address +
                 '}';
     }
 }

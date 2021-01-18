@@ -1,6 +1,6 @@
-package com.hkarabakla.repositories;
+package com.syrisa.repositories;
 
-import com.hkarabakla.entities.User;
+import com.syrisa.entities.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

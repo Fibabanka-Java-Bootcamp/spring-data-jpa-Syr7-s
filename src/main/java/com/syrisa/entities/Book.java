@@ -1,4 +1,4 @@
-package com.hkarabakla.entities;
+package com.syrisa.entities;
 
 import javax.persistence.*;
 

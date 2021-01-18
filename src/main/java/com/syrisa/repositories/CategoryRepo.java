@@ -1,6 +1,6 @@
-package com.hkarabakla.repositories;
+package com.syrisa.repositories;
 
-import com.hkarabakla.entities.Category;
+import com.syrisa.entities.Category;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CategoryRepo extends CrudRepository<Category, Integer> {

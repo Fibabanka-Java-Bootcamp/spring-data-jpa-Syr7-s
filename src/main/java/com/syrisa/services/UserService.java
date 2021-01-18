@@ -1,8 +1,8 @@
-package com.hkarabakla.services;
+package com.syrisa.services;
 
-import com.hkarabakla.entities.Address;
-import com.hkarabakla.entities.User;
-import com.hkarabakla.repositories.UserRepo;
+import com.syrisa.entities.Address;
+import com.syrisa.entities.User;
+import com.syrisa.repositories.UserRepo;
 import org.springframework.stereotype.Component;
 
 @Component

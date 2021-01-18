@@ -1,8 +1,8 @@
-package com.hkarabakla.services;
+package com.syrisa.services;
 
-import com.hkarabakla.entities.Book;
-import com.hkarabakla.entities.Category;
-import com.hkarabakla.repositories.CategoryRepo;
+import com.syrisa.entities.Book;
+import com.syrisa.entities.Category;
+import com.syrisa.repositories.CategoryRepo;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package com.hkarabakla;
+package com.syrisa;
 
 import static org.junit.Assert.assertTrue;
 
