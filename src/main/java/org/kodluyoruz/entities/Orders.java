@@ -1,8 +1,6 @@
 package org.kodluyoruz.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -13,6 +11,10 @@ public class Orders {
     private int id;
 
     private LocalDate createdAt;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id",referencedColumnName = "id")
+    private User user;
 
     private double total;
 
@@ -40,11 +42,29 @@ public class Orders {
         this.total = total;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+/*
     @Override
     public String toString() {
         return "Orders{" +
                 "id=" + id +
                 ", createdAt=" + createdAt +
+                ", total=" + total +
+                '}';
+    }*/
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "id=" + id +
+                ", createdAt=" + createdAt +
+                ", user=" + user +
                 ", total=" + total +
                 '}';
     }

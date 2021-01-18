@@ -2,6 +2,7 @@ package org.kodluyoruz.entities;
 
 import javax.persistence.*;
 import java.util.List;
+
 @Entity
 public class User {
     @Id
@@ -14,8 +15,8 @@ public class User {
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 
-   /* @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    private List<Order> orders;*/
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Orders> orders;
 
     public int getId() {
         return id;
@@ -40,15 +41,16 @@ public class User {
     public void setAddress(Address address) {
         this.address = address;
     }
-/*
-    public List<Order> getOrders() {
-        return orders;
-    }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
-*/
+    /*
+        public List<Order> getOrders() {
+            return orders;
+        }
+
+        public void setOrders(List<Order> orders) {
+            this.orders = orders;
+        }
+    */
     @Override
     public String toString() {
         return "User{" +
