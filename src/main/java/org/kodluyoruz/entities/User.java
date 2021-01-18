@@ -14,8 +14,8 @@ public class User {
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 
-    /*@OneToMany(mappedBy = "user")
-    private List<Order> orders;*/
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
 
     public int getId() {
         return id;
@@ -39,6 +39,14 @@ public class User {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     @Override
