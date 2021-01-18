@@ -1,6 +1,7 @@
 package org.kodluyoruz;
 
 import org.kodluyoruz.services.CategoryService;
+import org.kodluyoruz.services.OrdersService;
 import org.kodluyoruz.services.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -18,6 +19,8 @@ public class App
         CategoryService categoryService = (CategoryService) appContext.getBean("categoryService");
         categoryService.categoryOperations();
 
+        OrdersService ordersService = (OrdersService) appContext.getBean("ordersService");
+        ordersService.orderOperations();
         appContext.close();
     }
 }
