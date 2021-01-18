@@ -18,8 +18,6 @@ public class App
         CategoryService categoryService = (CategoryService) appContext.getBean("categoryService");
         categoryService.categoryOperations();
 
-
-
         appContext.close();
     }
 }
