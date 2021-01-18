@@ -1,8 +1,8 @@
-package com.syrisa.services;
+package org.kodluyoruz.services;
 
-import com.syrisa.entities.Book;
-import com.syrisa.entities.Category;
-import com.syrisa.repositories.CategoryRepo;
+import org.kodluyoruz.entities.Book;
+import org.kodluyoruz.entities.Category;
+import org.kodluyoruz.repositories.CategoryRepo;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;

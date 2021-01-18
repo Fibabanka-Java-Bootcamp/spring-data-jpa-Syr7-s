@@ -1,4 +1,4 @@
-package com.syrisa;
+package org.kodluyoruz;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,7 +33,7 @@ class ApplicationConfig {
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("com.syrisa.entities");
+        factory.setPackagesToScan("org.kodluyoruz.entities");
         factory.setDataSource(dataSource());
         return factory;
     }

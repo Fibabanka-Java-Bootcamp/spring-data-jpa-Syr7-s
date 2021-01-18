@@ -1,7 +1,7 @@
-package com.syrisa;
+package org.kodluyoruz;
 
-import com.syrisa.services.CategoryService;
-import com.syrisa.services.UserService;
+import org.kodluyoruz.services.CategoryService;
+import org.kodluyoruz.services.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class App
@@ -9,7 +9,7 @@ public class App
     public static void main( String[] args )
     {
         AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
-        appContext.scan("com.syrisa");
+        appContext.scan("org.kodluyoruz");
         appContext.refresh();
 
         UserService userService = (UserService) appContext.getBean("userService");

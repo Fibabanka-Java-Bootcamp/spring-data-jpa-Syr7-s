@@ -1,4 +1,4 @@
-package com.syrisa;
+package org.kodluyoruz;
 
 import static org.junit.Assert.assertTrue;
 

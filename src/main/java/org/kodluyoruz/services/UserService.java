@@ -1,8 +1,8 @@
-package com.syrisa.services;
+package org.kodluyoruz.services;
 
-import com.syrisa.entities.Address;
-import com.syrisa.entities.User;
-import com.syrisa.repositories.UserRepo;
+import org.kodluyoruz.entities.Address;
+import org.kodluyoruz.entities.User;
+import org.kodluyoruz.repositories.UserRepo;
 import org.springframework.stereotype.Component;
 
 @Component

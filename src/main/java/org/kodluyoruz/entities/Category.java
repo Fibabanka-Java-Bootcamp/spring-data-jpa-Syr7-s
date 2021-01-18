@@ -1,4 +1,4 @@
-package com.syrisa.entities;
+package org.kodluyoruz.entities;
 
 import javax.persistence.*;
 import java.util.List;

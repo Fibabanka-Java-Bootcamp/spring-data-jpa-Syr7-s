@@ -1,6 +1,6 @@
-package com.syrisa.repositories;
+package org.kodluyoruz.repositories;
 
-import com.syrisa.entities.User;
+import org.kodluyoruz.entities.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
