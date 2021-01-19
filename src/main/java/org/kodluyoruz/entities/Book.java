@@ -39,7 +39,7 @@ public class Book {
     @ManyToMany(mappedBy = "registeredOrderBook",cascade = CascadeType.ALL)
     private List<Orders> orders;
 
-    @ManyToMany(mappedBy = "registeredAuthorBook",fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "registeredAuthorBook")
     private List<Author> authors;
 
     /*   @Override

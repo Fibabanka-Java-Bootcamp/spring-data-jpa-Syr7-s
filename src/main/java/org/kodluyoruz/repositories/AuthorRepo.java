@@ -4,4 +4,5 @@ import org.kodluyoruz.entities.Author;
 import org.springframework.data.repository.CrudRepository;
 
 public interface AuthorRepo extends CrudRepository<Author,Integer> {
+    Author findAuthorByName(String name);
 }
