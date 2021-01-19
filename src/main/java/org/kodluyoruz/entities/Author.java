@@ -3,10 +3,8 @@ package org.kodluyoruz.entities;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
+import javax.persistence.*;
+import java.util.List;
 @Entity
 @Getter
 @Setter
@@ -17,6 +15,12 @@ public class Author {
 
     private String name;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "author_book",
+            joinColumns = @JoinColumn(name = "author_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_isbn")
+    )
+    private List<Book> registeredAuthorBook;
     @Override
     public String toString() {
         return "Author{" +
