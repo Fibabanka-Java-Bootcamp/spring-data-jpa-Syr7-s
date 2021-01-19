@@ -1,9 +1,15 @@
 package org.kodluyoruz.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class Orders {
 
     @Id
@@ -16,40 +22,15 @@ public class Orders {
     @JoinColumn(name = "user_id",referencedColumnName = "id")
     private User user;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name ="order_book",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_isbn"))
+    private List<Book> registeredOrderBook;
+
     private double total;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public LocalDate getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDate createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-/*
+    /*
     @Override
     public String toString() {
         return "Orders{" +
