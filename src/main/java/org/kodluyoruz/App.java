@@ -1,5 +1,6 @@
 package org.kodluyoruz;
 
+import org.kodluyoruz.services.AuthorService;
 import org.kodluyoruz.services.CategoryService;
 import org.kodluyoruz.services.OrdersService;
 import org.kodluyoruz.services.UserService;
@@ -21,6 +22,9 @@ public class App
 
         OrdersService ordersService = (OrdersService) appContext.getBean("ordersService");
         ordersService.orderOperations();
+
+        AuthorService authorService = (AuthorService) appContext.getBean("authorService");
+        authorService.authorOperations();
         appContext.close();
     }
 }
