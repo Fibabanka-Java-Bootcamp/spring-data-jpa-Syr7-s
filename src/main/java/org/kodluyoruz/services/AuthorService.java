@@ -21,7 +21,7 @@ public class AuthorService {
     }
 
     public void authorOperations() {
-        Book b1 = new Book();
+      /*  Book b1 = new Book();
         b1.setIsbn(UUID.randomUUID().toString());
         b1.setName("Pro Spring 5");
         b1.setDescription("This book about Spring");
@@ -75,7 +75,7 @@ public class AuthorService {
         Author author1 = authorRepo.findAuthorByName("Chris Schaefer");
         System.out.println(author1.getRegisteredAuthorBook());
 
-
+*/
 
     }
 }

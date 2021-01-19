@@ -1,9 +1,6 @@
 package org.kodluyoruz;
 
-import org.kodluyoruz.services.AuthorService;
-import org.kodluyoruz.services.CategoryService;
-import org.kodluyoruz.services.OrdersService;
-import org.kodluyoruz.services.UserService;
+import org.kodluyoruz.services.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class App
@@ -23,8 +20,10 @@ public class App
         OrdersService ordersService = (OrdersService) appContext.getBean("ordersService");
         ordersService.orderOperations();
 
-        AuthorService authorService = (AuthorService) appContext.getBean("authorService");
-        authorService.authorOperations();
+      //  AuthorService authorService = (AuthorService) appContext.getBean("authorService");
+      //  authorService.authorOperations();
+        BookService bookService = (BookService) appContext.getBean("bookService");
+        bookService.bookOperation();
         appContext.close();
     }
 }
