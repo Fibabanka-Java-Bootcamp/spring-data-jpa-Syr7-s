@@ -46,13 +46,13 @@ public class BookService {
         bookRepo.save(book);
         System.out.println(author);
 
-        System.out.println("Book from Book Service");
-        System.out.println(book);
+       /* System.out.println("Book from Book Service");
+        System.out.println(book);*/
         Book book1 = bookRepo.findBookByName("Spring Security");
         System.out.println(book1);
         System.out.println("**********************************");
         Author book1Author= authorRepo.findAuthorByName("Laurentiu Spilca");
-        System.out.println(book1Author.getName());
+        System.out.println(book1Author.getRegisteredAuthorBook());
         /*
         System.out.println("Find Book By Author Name");
 
