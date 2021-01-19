@@ -2,27 +2,31 @@ package org.kodluyoruz.services;
 
 import org.kodluyoruz.entities.Author;
 import org.kodluyoruz.entities.Book;
+import org.kodluyoruz.entities.Category;
 import org.kodluyoruz.repositories.AuthorRepo;
 import org.kodluyoruz.repositories.BookRepo;
+import org.kodluyoruz.repositories.CategoryRepo;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.UUID;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class BookService {
     private BookRepo bookRepo;
     private AuthorRepo authorRepo;
+    private CategoryRepo categoryRepo;
 
-    public BookService(BookRepo bookRepo, AuthorRepo authorRepo) {
+    public BookService(BookRepo bookRepo, AuthorRepo authorRepo, CategoryRepo categoryRepo) {
         this.bookRepo = bookRepo;
         this.authorRepo = authorRepo;
+        this.categoryRepo = categoryRepo;
     }
 
     public void bookOperation() {
         Author author = new Author();
+        Category category = new Category();
+        category.setName("Novel");
         author.setName("Tolstoy");
 
         Book book = new Book();
@@ -58,6 +62,7 @@ public class BookService {
         bookRepo.save(book1);
         System.out.println(author);
 
+        category.setBooks(books);
        /* System.out.println("Book from Book Service");
         System.out.println(book);*/
         Book book2 = bookRepo.findBookByName("Savas Baris");
@@ -65,6 +70,11 @@ public class BookService {
         System.out.println("**********************************");
         Author book1Author= authorRepo.findAuthorByName("Tolstoy");
         System.out.println(book1Author.getRegisteredAuthorBook());
+        System.out.println("Novel: ");
+        System.out.println(category);
+
+
+
 
     }
 }
