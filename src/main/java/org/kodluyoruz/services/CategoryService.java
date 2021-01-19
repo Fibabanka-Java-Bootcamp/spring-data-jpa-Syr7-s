@@ -35,7 +35,6 @@ public class CategoryService {
         c1.setBooks(Collections.singletonList(b1));
 
         categoryRepo.save(c1);
-
         System.out.println(c1);
     }
 }

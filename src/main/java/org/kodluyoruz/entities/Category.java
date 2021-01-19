@@ -17,7 +17,7 @@ public class Category {
 
     private String name;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.REMOVE,fetch = FetchType.EAGER)
     private List<Book> books;
 
     @Override
@@ -25,7 +25,7 @@ public class Category {
         return "Category{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", books=" + books +
+               // ", books=" + books +
                 '}';
     }
 }

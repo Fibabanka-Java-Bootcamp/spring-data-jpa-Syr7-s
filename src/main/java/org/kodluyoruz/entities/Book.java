@@ -76,7 +76,7 @@ public class Book {
                 ", price=" + price +
                 ", currency='" + currency + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
-               // ", category=" + category +
+                ", category=" + category +
                // ", orders=" + orders +
                // ", authors=" + authors +
                 '}';
