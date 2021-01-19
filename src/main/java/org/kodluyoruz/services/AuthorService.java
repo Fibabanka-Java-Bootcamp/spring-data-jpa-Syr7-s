@@ -3,6 +3,7 @@ package org.kodluyoruz.services;
 import org.kodluyoruz.entities.Author;
 import org.kodluyoruz.entities.Book;
 import org.kodluyoruz.repositories.AuthorRepo;
+import org.kodluyoruz.repositories.BookRepo;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -13,9 +14,10 @@ import java.util.List;
 @Component
 public class AuthorService {
     private final AuthorRepo authorRepo;
-
-    public AuthorService(AuthorRepo authorRepo) {
+    private final BookRepo bookRepo;
+    public AuthorService(AuthorRepo authorRepo, BookRepo bookRepo) {
         this.authorRepo = authorRepo;
+        this.bookRepo = bookRepo;
     }
 
     public void authorOperations() {
@@ -29,6 +31,7 @@ public class AuthorService {
         b1.setCurrency("₺");
         b1.setImageUrl("image2.jpg");
 
+
         Book b2 = new Book();
         b2.setIsbn(UUID.randomUUID().toString());
         b2.setName("Cloud Native Java");
@@ -38,12 +41,14 @@ public class AuthorService {
         b2.setPrice(50.75);
         b2.setCurrency("₺");
         b2.setImageUrl("image2.jpg");
+
         List<Book> books = new ArrayList<>();
         books.add(b1);
         books.add(b2);
         Author author = new Author();
         author.setName("Chris Schaefer");
         author.setRegisteredAuthorBook(books);
+
         authorRepo.save(author);
         System.out.println(author);
         System.out.println("**********************************************");
@@ -58,12 +63,12 @@ public class AuthorService {
         b3.setPrice(50.75);
         b3.setCurrency("₺");
         b3.setImageUrl("image2.jpg");
+
+
         List<Book> books1 = new ArrayList<>();
         books1.add(b3);
-
         author2.setName("John Camell");
         author2.setRegisteredAuthorBook(books1);
-
         authorRepo.save(author2);
         System.out.println(author2);
         System.out.println("*********Veritabanı Sorgusu");

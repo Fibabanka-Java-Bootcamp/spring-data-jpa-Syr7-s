@@ -39,7 +39,7 @@ public class Book {
     @ManyToMany(mappedBy = "registeredOrderBook",cascade = CascadeType.ALL)
     private List<Orders> orders;
 
-    @ManyToMany(mappedBy = "registeredAuthorBook")
+    @ManyToMany(mappedBy = "registeredAuthorBook",fetch = FetchType.EAGER)
     private List<Author> authors;
 
     /*   @Override
@@ -47,6 +47,21 @@ public class Book {
         return "Book{" +
                 "isbn='" + isbn + '\'' +
                 ", name='" + name + '\'' +
+                '}';
+    }*/
+/*
+    @Override
+    public String toString() {
+        return "Book{" +
+                "isbn='" + isbn + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", publishedDate=" + publishedDate +
+                ", addedDate=" + addedDate +
+                ", price=" + price +
+                ", currency='" + currency + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                //", category=" + category +
                 '}';
     }*/
 
@@ -61,7 +76,9 @@ public class Book {
                 ", price=" + price +
                 ", currency='" + currency + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
-                //", category=" + category +
+               // ", category=" + category +
+               // ", orders=" + orders +
+                //", authors=" + authors +
                 '}';
     }
 }
