@@ -1,9 +1,14 @@
 package org.kodluyoruz.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class Category {
 
     @Id
@@ -14,7 +19,7 @@ public class Category {
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.REMOVE)
     private List<Book> books;
-
+/*
     public int getId() {
         return id;
     }
@@ -38,7 +43,7 @@ public class Category {
     public void setBooks(List<Book> books) {
         this.books = books;
     }
-
+*/
     @Override
     public String toString() {
         return "Category{" +
