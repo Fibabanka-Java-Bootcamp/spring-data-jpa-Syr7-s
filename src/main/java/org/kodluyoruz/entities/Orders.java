@@ -30,25 +30,6 @@ public class Orders {
 
     private double total;
 
-    /*
-    @Override
-    public String toString() {
-        return "Orders{" +
-                "id=" + id +
-                ", createdAt=" + createdAt +
-                ", total=" + total +
-                '}';
-    }*/
-
-  /*  @Override
-    public String toString() {
-        return "Orders{" +
-                "id=" + id +
-                ", createdAt=" + createdAt +
-                ", user=" + user +
-                ", total=" + total +
-                '}';
-    }*/
 
     @Override
     public String toString() {
