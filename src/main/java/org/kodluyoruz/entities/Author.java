@@ -21,15 +21,6 @@ public class Author {
             inverseJoinColumns = @JoinColumn(name = "book_isbn")
     )
     private List<Book> registeredAuthorBook;
-  /*
-    @Override
-    public String toString() {
-        return "Author{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
-    */
 
     @Override
     public String toString() {
