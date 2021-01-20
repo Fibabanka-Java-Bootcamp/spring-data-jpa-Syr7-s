@@ -18,10 +18,8 @@ public class Book {
 
     private String description;
 
-    //@Temporal(TemporalType.DATE)
     private LocalDate publishedDate;
 
-    //@Temporal(TemporalType.DATE)
     private LocalDate addedDate;
 
     private double price;
