@@ -53,7 +53,7 @@ public class Book {
                 ", imageUrl='" + imageUrl + '\'' +
                 ",\ncategory=" + category +
                // ", orders=" + orders +
-               // ", authors=" + authors +
+                // ", authors=" + authors +
                 '}';
     }
 }
