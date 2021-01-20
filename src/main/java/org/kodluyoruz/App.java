@@ -21,6 +21,7 @@ public class App {
         OrdersService ordersService = (OrdersService) appContext.getBean("ordersService");
         ordersService.orderOperations();
 
+        ordersService.orderBookFromUser();
         //  AuthorService authorService = (AuthorService) appContext.getBean("authorService");
         //  authorService.authorOperations();
 

@@ -40,12 +40,23 @@ public class Orders {
                 '}';
     }*/
 
-    @Override
+  /*  @Override
     public String toString() {
         return "Orders{" +
                 "id=" + id +
                 ", createdAt=" + createdAt +
                 ", user=" + user +
+                ", total=" + total +
+                '}';
+    }*/
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "id = " + id +
+                ", createdAt = " + createdAt +
+                ",\nuser = " + user +
+                ",\nregisteredOrderBook = " + registeredOrderBook +
                 ", total=" + total +
                 '}';
     }
