@@ -76,7 +76,7 @@ public class OrdersService {
             //System.out.println(orders);
 
             Orders orders1 = ordersRepo.findByUser_Name("Musa");
-            System.out.println("Musa adlı kullanıcnın Kitap Siparisleri");
+            System.out.println("Musa adlı kullanıcının Kitap Siparisleri");
             System.out.println(orders1.getRegisteredOrderBook());
 
 

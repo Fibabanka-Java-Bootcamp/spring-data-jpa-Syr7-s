@@ -25,7 +25,7 @@ public class BookService {
     }
 
     public void bookOperation() {
-       // firstProcess();
+        // firstProcess();
         Author a1 = new Author();
         Author a2 = new Author();
         Author a3 = new Author();
@@ -52,8 +52,8 @@ public class BookService {
         b1.setIsbn(UUID.randomUUID().toString());
         b1.setName("Savas ve Baris");
         b1.setDescription("Lev Tolstoy wrote in 1867.");
-        b1.setPublishedDate(LocalDate.of(1867,7,11));
-        b1.setAddedDate(LocalDate.of(1877,12,6));
+        b1.setPublishedDate(LocalDate.of(1867, 7, 11));
+        b1.setAddedDate(LocalDate.of(1877, 12, 6));
         b1.setPrice(120.75);
         b1.setCurrency("₺");
         b1.setImageUrl("savasvebaris.jpg");
@@ -61,8 +61,8 @@ public class BookService {
         b2.setIsbn(UUID.randomUUID().toString());
         b2.setName("Anna Karina");
         b2.setDescription("Lev Tolstoy wrote in 1877.");
-        b2.setPublishedDate(LocalDate.of(1877,12,6));
-        b2.setAddedDate(LocalDate.of(1900,6,25));
+        b2.setPublishedDate(LocalDate.of(1877, 12, 6));
+        b2.setAddedDate(LocalDate.of(1900, 6, 25));
         b2.setPrice(150.00);
         b2.setCurrency("₺");
         b2.setImageUrl("annakarina.jpg");
@@ -70,8 +70,8 @@ public class BookService {
         b3.setIsbn(UUID.randomUUID().toString());
         b3.setName("Suc ve Ceza");
         b3.setDescription("Dostoyevski wrote in 1866.");
-        b3.setPublishedDate(LocalDate.of(1866,5,20));
-        b3.setAddedDate(LocalDate.of(1900,10,12));
+        b3.setPublishedDate(LocalDate.of(1866, 5, 20));
+        b3.setAddedDate(LocalDate.of(1900, 10, 12));
         b3.setPrice(160.00);
         b3.setCurrency("€");
         b3.setImageUrl("sucveceza.jpg");
@@ -79,8 +79,8 @@ public class BookService {
         b4.setIsbn(UUID.randomUUID().toString());
         b4.setName("Karamazov Kardesler");
         b4.setDescription("Dostoyevski wrote in 1877.");
-        b4.setPublishedDate(LocalDate.of(1880,10,12));
-        b4.setAddedDate(LocalDate.of(1900,8,25));
+        b4.setPublishedDate(LocalDate.of(1880, 10, 12));
+        b4.setAddedDate(LocalDate.of(1900, 8, 25));
         b4.setPrice(200.00);
         b4.setCurrency("$");
         b4.setImageUrl("karamazov.jpg");
@@ -88,8 +88,8 @@ public class BookService {
         b5.setIsbn(UUID.randomUUID().toString());
         b5.setName("Son Kuslar");
         b5.setDescription("Sait Faik wrote in 1952.");
-        b5.setPublishedDate(LocalDate.of(1952,5,11));
-        b5.setAddedDate(LocalDate.of(1962,2,12));
+        b5.setPublishedDate(LocalDate.of(1952, 5, 11));
+        b5.setAddedDate(LocalDate.of(1962, 2, 12));
         b5.setPrice(200.00);
         b5.setCurrency("₺");
         b5.setImageUrl("sonksular.jpg");
@@ -97,8 +97,8 @@ public class BookService {
         b6.setIsbn(UUID.randomUUID().toString());
         b6.setName("Avare Yıllar");
         b6.setDescription("Orhan wrote in 1950.");
-        b6.setPublishedDate(LocalDate.of(1950,10,12));
-        b6.setAddedDate(LocalDate.of(1960,8,25));
+        b6.setPublishedDate(LocalDate.of(1950, 10, 12));
+        b6.setAddedDate(LocalDate.of(1960, 8, 25));
         b6.setPrice(100.00);
         b6.setCurrency("₺");
         b6.setImageUrl("avareyillar.jpg");
@@ -146,26 +146,22 @@ public class BookService {
         bookRepo.save(b4);
 
 
-
-
-
-
         Author authors = authorRepo.findAuthorByName("Orhan Kemal");
-        System.out.println("*************************\n"+authors.getName()+"\n"+authors.getRegisteredAuthorBook()
-        +"\n*************************");
+        System.out.println("*************************\n" + authors.getName() + "\n" + authors.getRegisteredAuthorBook()
+                + "\n*************************");
         System.out.println("******************Books***************************");
         List<Book> books = (List<Book>) bookRepo.findAll();
-        for (Book b:books){
+        for (Book b : books) {
             System.out.println(b);
         }
         System.out.println("Kitap Adına Gore Arama");
-        Book bookByName =  bookRepo.findBookByName("Karamazov Kardesler");
+        Book bookByName = bookRepo.findBookByName("Karamazov Kardesler");
 
-        System.out.println(bookByName.getName()+" "+bookByName.getAuthors()+" "+bookByName.getCategory());
+        System.out.println(bookByName.getName() + " " + bookByName.getAuthors() + " " + bookByName.getCategory());
 
         List<Category> categories = (List<Category>) categoryRepo.findAll();
         System.out.println("Categories");
-        for (Category c:categories) {
+        for (Category c : categories) {
             System.out.println(c.getName());
         }
 
@@ -222,7 +218,7 @@ public class BookService {
         Book book2 = bookRepo.findBookByName("Savas Baris");
         System.out.println(book2);
         System.out.println("**********************************");
-        Author book1Author= authorRepo.findAuthorByName("Tolstoy");
+        Author book1Author = authorRepo.findAuthorByName("Tolstoy");
         System.out.println(book1Author.getRegisteredAuthorBook());
         categoryRepo.save(category);
         System.out.println("Novel: ");
