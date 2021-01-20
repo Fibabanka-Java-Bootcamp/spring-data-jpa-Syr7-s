@@ -42,29 +42,6 @@ public class Book {
     @ManyToMany(mappedBy = "registeredAuthorBook",fetch = FetchType.EAGER)
     private List<Author> authors;
 
-    /*   @Override
-    public String toString() {
-        return "Book{" +
-                "isbn='" + isbn + '\'' +
-                ", name='" + name + '\'' +
-                '}';
-    }*/
-/*
-    @Override
-    public String toString() {
-        return "Book{" +
-                "isbn='" + isbn + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", publishedDate=" + publishedDate +
-                ", addedDate=" + addedDate +
-                ", price=" + price +
-                ", currency='" + currency + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                //", category=" + category +
-                '}';
-    }*/
-
     @Override
     public String toString() {
         return "Book{" +
