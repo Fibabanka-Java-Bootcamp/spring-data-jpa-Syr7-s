@@ -25,7 +25,7 @@ class ApplicationConfig {
 
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         return builder.setType(EmbeddedDatabaseType.H2).build();
-      /*  MysqlDataSource dataSource=new MysqlDataSource();
+       /* MysqlDataSource dataSource=new MysqlDataSource();
         dataSource.setUser("root");
         dataSource.setPassword("isaSayar7?*");
         dataSource.setUrl("jdbc:mysql://localhost:3306/libraries_book?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
