@@ -2,6 +2,7 @@ package org.kodluyoruz;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
@@ -18,6 +19,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableJpaRepositories
 @EnableTransactionManagement
+@ComponentScan(basePackages = "org.kodluyoruz")
 class ApplicationConfig {
 
     @Bean

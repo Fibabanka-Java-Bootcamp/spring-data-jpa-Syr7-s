@@ -4,7 +4,7 @@ import org.kodluyoruz.entities.Address;
 import org.kodluyoruz.entities.User;
 import org.kodluyoruz.repositories.UserRepo;
 import org.springframework.stereotype.Component;
-
+import java.util.List;
 @Component
 public class UserService {
 
@@ -30,5 +30,27 @@ public class UserService {
         System.out.println(u.getId());
 
         System.out.println(repo.findAllByNameContainingIgnoreCase("se"));
+    }
+
+    public void userAddToTheDatabase(){
+        User u = new User();
+        u.setName("Fatih");
+
+        Address address = new Address();
+        address.setStreet("Adnan Kahveci Sokagi");
+        address.setNumber("57");
+        address.setCity("Istanbul");
+        address.setZipcode(12);
+
+        u.setAddress(address);
+        repo.save(u);
+    }
+
+    public User getUser(String name){
+        return repo.findByName(name);
+    }
+
+    public List<User> getAllUsers(){
+        return (List<User>) repo.findAll();
     }
 }

@@ -8,7 +8,7 @@ import org.kodluyoruz.entities.Book;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.UUID;
-
+import java.util.List;
 @Component
 public class CategoryService {
 
@@ -36,5 +36,30 @@ public class CategoryService {
 
         categoryRepo.save(c1);
         System.out.println(c1);
+    }
+    public void categoryAddToTheDatabase(){
+        Book b2 = new Book();
+        b2.setIsbn(UUID.randomUUID().toString());
+        b2.setName("Araba Sevdası");
+        b2.setDescription("This book a turkish novel.");
+        b2.setPublishedDate(LocalDate.of(1898,8,10));
+        b2.setAddedDate(LocalDate.of(2001,10,15));
+        b2.setPrice(151.45);
+        b2.setCurrency("₺");
+        b2.setImageUrl("arabasevdasi.jpg");
+
+        Category c2 = new Category();
+        c2.setName("Turkish Novel");
+        c2.setBooks(Collections.singletonList(b2));
+
+        categoryRepo.save(c2);
+        System.out.println(c2);
+    }
+
+    public Category getCategory(String name){
+        return categoryRepo.findByName(name);
+    }
+    public List<Category> getAllCategory(){
+        return (List<Category>) categoryRepo.findAll();
     }
 }
