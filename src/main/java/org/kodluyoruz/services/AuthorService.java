@@ -76,6 +76,8 @@ public class AuthorService {
         System.out.println(author1.getRegisteredAuthorBook());
 
 */
-
+    }
+    public Author getAuthor(String authorName){
+        return authorRepo.findAuthorByName(authorName);
     }
 }

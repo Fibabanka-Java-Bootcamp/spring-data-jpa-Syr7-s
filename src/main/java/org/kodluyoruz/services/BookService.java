@@ -224,4 +224,18 @@ public class BookService {
         System.out.println("Novel: ");
         System.out.println(category);
     }
+
+    public void addBook(Author author,Book book) {
+        List<Book> books = new ArrayList<>();
+        books.add(book);
+
+        author.setRegisteredAuthorBook(books);
+        authorRepo.save(author);
+        bookRepo.save(book);
+
+    }
+
+    public Book getBookByBookName(String bookName){
+        return bookRepo.findBookByName(bookName);
+    }
 }
