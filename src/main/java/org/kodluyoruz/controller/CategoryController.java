@@ -27,7 +27,7 @@ public class CategoryController {
         return "Yeni kategori eklendi.";
     }
 
-    @RequestMapping(value = "{name}",method = RequestMethod.GET)
+    @RequestMapping(value = "/{name}",method = RequestMethod.GET)
     public String getCategory(@PathVariable("name") String name){
         Category category = categoryService.getCategory(name);
         System.out.println(category);
@@ -39,6 +39,5 @@ public class CategoryController {
         List<Category> categoryList = categoryService.getAllCategory();
         System.out.println(categoryList);
         return "Tum kategoriler getirildi.";
-
     }
 }
