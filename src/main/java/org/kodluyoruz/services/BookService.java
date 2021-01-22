@@ -225,7 +225,7 @@ public class BookService {
         System.out.println(category);
     }
 
-    public void addBook(Author author,Book book) {
+    public void addBook(Author author, Book book) {
         List<Book> books = new ArrayList<>();
         books.add(book);
 
@@ -235,7 +235,46 @@ public class BookService {
 
     }
 
-    public Book getBookByBookName(String bookName){
+    public Book getBookByBookName(String bookName) {
         return bookRepo.findBookByName(bookName);
+    }
+
+    public void oneBookIsMoreThanOneAuthor() {
+        Author author1 = new Author();
+        author1.setName("Josh Long");
+        Author author2 = new Author();
+        author2.setName("Kenny Bastani");
+
+        Category category = new Category();
+        category.setName("Spring");
+
+        Book b1 = new Book();
+        b1.setIsbn(UUID.randomUUID().toString());
+        b1.setName("Cloud Native Java");
+        b1.setDescription("Josh Long and Kenny Bastani wrote in 1867.");
+        b1.setPublishedDate(LocalDate.of(1867, 7, 11));
+        b1.setAddedDate(LocalDate.of(1877, 12, 6));
+        b1.setPrice(120.75);
+        b1.setCurrency("₺");
+        b1.setImageUrl("cloudnativejava.jpg");
+        b1.setCategory(category);
+
+
+        List<Book> books = new ArrayList<>();
+        books.add(b1);
+        category.setBooks(books);
+
+        author1.setRegisteredAuthorBook(books);
+        author2.setRegisteredAuthorBook(books);
+
+        List<Author> authors = new ArrayList<>();
+        authors.add(author1);
+        authors.add(author2);
+        b1.setAuthors(authors);
+
+        categoryRepo.save(category);
+        authorRepo.save(author1);
+        authorRepo.save(author2);
+        bookRepo.save(b1);
     }
 }

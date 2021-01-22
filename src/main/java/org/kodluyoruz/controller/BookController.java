@@ -58,4 +58,10 @@ public class BookController {
         System.out.println(book.getName()+"\n"+book.getAuthors());
         return book.getName()+" adlı kitap getirildi.";
     }
+
+    @RequestMapping(value = "/addNewBook",method = RequestMethod.GET)
+    public String getNewBook(){
+        bookService.oneBookIsMoreThanOneAuthor();
+        return "Bir kitabın birden fazla yazarı olabilir.";
+    }
 }
