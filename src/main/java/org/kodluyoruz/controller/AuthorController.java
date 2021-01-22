@@ -20,9 +20,9 @@ public class AuthorController {
         Author author = authorService.getAuthor(authorName);
         if (author != null){
             System.out.println(author);
-            return author.getName()+" adli yazarın bilgileri getirildi.";
+            return author.getName()+" named writer info was received.";
         }else
-            return "Yazar bulunamadi.";
+            return "Writer is not found";
     }
 
     @RequestMapping(value = "/allAuthors",method = RequestMethod.GET)
@@ -30,6 +30,6 @@ public class AuthorController {
         System.out.println("All writers are getting....");
         List<Author> authorList = authorService.getAllAuthors();
         Arrays.stream(authorList.toArray()).forEach(System.out::println) ;
-        return "Tum yazarlar getirildi.";
+        return "All writers have been brought.";
     }
 }
