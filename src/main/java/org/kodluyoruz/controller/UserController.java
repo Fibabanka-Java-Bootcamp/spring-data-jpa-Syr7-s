@@ -9,10 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/userProcess")
+@RequestMapping("/api/user")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -20,26 +21,34 @@ public class UserController {
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String getHomePage() {
         userService.userOperations();
-        return "Veritabanı Islemleri Yapıldı.";
+        return "First user record was created.";
     }
 
     @RequestMapping(value = "/addUser", method = RequestMethod.GET)
     private String addUser() {
         userService.userAddToTheDatabase();
-        return "User veritabanına eklendi.";
+        return "User was added to the database.";
     }
 
     @RequestMapping(value = "/userGet/{name}", method = RequestMethod.GET)
     private String getUserByName(@PathVariable("name") String name) {
         User user = userService.getUser(name);
-        System.out.println(user);
-        return "User getirildi.";
+        if (user != null) {
+            System.out.println(user);
+            return name + " named user was received.";
+        }
+        return name + " named user is not found.";
+
     }
 
-    @RequestMapping(value = "/allUser",method = RequestMethod.GET)
+    @RequestMapping(value = "/allUser", method = RequestMethod.GET)
     private String getAllUser() {
-        List<User> users = userService.getAllUsers();
-        System.out.println(users);
-        return "Tum kullanıcılar getirildi.";
+        List<User> userList = userService.getAllUsers();
+        if (!userList.isEmpty()) {
+            Arrays.stream(userList.toArray()).forEach(System.out::println);
+            return "All users have been brought";
+        }
+        return "UserList is empty";
+
     }
 }

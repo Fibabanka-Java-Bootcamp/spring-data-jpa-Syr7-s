@@ -43,12 +43,10 @@ public class CategoryController {
     @RequestMapping(value = "/allCategory", method = RequestMethod.GET)
     public String getAllCategory() {
         List<Category> categoryList = categoryService.getAllCategory();
-        System.out.println("All categeries are getting.");
-
-        if (categoryList != null) {
+        if (!categoryList.isEmpty()) {
+            System.out.println("All categeries are getting.");
             Arrays.stream(categoryList.toArray()).forEach(System.out::println);
             return "All categories have been brought.";
-        }
-        return "CategoryList is empty";
+        }return "CategoryList is empty";
     }
 }

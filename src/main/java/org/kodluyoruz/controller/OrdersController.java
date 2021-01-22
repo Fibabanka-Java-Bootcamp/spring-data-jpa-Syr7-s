@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
 @RestController
 @RequestMapping("/api/orders")
 public class OrdersController {
@@ -23,22 +26,23 @@ public class OrdersController {
 
     @Autowired
     private BookService bookService;
-    @RequestMapping(value = "/ordersHome",method = RequestMethod.GET)
-    public String getOrdersHome(){
+
+    @RequestMapping(value = "/ordersHome", method = RequestMethod.GET)
+    public String getOrdersHome() {
         ordersService.orderOperations();
         return "Orders is getting.";
     }
 
-    @RequestMapping(value = "/ordersAdd",method = RequestMethod.GET)
-    public String newOrders(){
+    @RequestMapping(value = "/ordersAdd", method = RequestMethod.GET)
+    public String newOrders() {
         ordersService.orderBookFromUser();
         return "The order is being placed.";
     }
 
-    @RequestMapping(value = "/orderBook",method = RequestMethod.GET)
-    public String getOrderBook(){
+    @RequestMapping(value = "/orderBook", method = RequestMethod.GET)
+    public String getOrderBook() {
         User user = new User();
-        user.setName("Timur");;
+        user.setName("Timur");
 
         Address address = new Address();
         address.setStreet("Ataturk Street");
@@ -47,8 +51,8 @@ public class OrdersController {
         user.setAddress(address);
 
         Book book = bookService.getBookByBookName("Jane Eyre");
-        if (book!=null){
-            List<Book> books =new ArrayList<>();
+        if (book != null) {
+            List<Book> books = new ArrayList<>();
             books.add(book);
 
             Orders orders = new Orders();
@@ -58,31 +62,31 @@ public class OrdersController {
             orders.setRegisteredOrderBook(books);
             orders.setTotal(20.00);
 
-            ordersService.newOrderBook(user,orders);
+            ordersService.newOrderBook(user, orders);
 
-            return user.getName()+" named user have a order.";
-        }else{
+            return user.getName() + " named user have a order.";
+        } else {
             return "Ordered books are not in the records.";
         }
     }
+
     @RequestMapping(value = "/{userName}", method = RequestMethod.GET)
-    public String getOrderByUserName(@PathVariable("userName") String userName){
+    public String getOrderByUserName(@PathVariable("userName") String userName) {
         Orders order = ordersService.getOrder(userName);
-        if (order!=null){
+        if (order != null) {
             System.out.println(order);
-            return userName+" named user order.";
-        }else
-            return "The order is not found";
+            return userName + " named user order.";
+        }return "The order is not found";
     }
-    @RequestMapping(value = "/allOrders",method = RequestMethod.GET)
-    public String getAllOrders(){
-        List<Orders> orders = ordersService.getAllOrders();
-        if (orders !=null){
-            for (Orders order:orders) {
-                System.out.println(order);
-            }
+
+    @RequestMapping(value = "/allOrders", method = RequestMethod.GET)
+    public String getAllOrders() {
+        List<Orders> ordersList = ordersService.getAllOrders();
+        if (!ordersList.isEmpty()) {
+            System.out.println("All Orders");
+            Arrays.stream(ordersList.toArray()).forEach(System.out::println);
             return "All orders have been brought";
-        }return "Orders List is empty";
+        }return "OrdersList is empty";
 
     }
 }

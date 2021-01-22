@@ -57,6 +57,7 @@ public class BookController {
     public String getBookByBookName(@PathVariable("bookName") String bookName){
         Book book = bookService.getBookByBookName(bookName);
         if (book != null){
+            System.out.println("All books are getting.");
             System.out.println(book.getName()+"\n"+book.getAuthors());
             return book.getName()+" named book was received.";
         }return "The writer is not found";
@@ -71,10 +72,10 @@ public class BookController {
     @RequestMapping(value = "/allBooks",method = RequestMethod.GET)
     public String getAllBooks(){
         List<Book> bookList = bookService.getAllBooks();
-        if (bookList != null) {
+        if (!bookList.isEmpty()) {
             Arrays.stream(bookList.toArray()).forEach(System.out::println);
-            return "All books have been brought";
-        }return "BookList is emtpy";
+            return "All books have been brought.";
+        }return "BookList is empty.";
 
     }
 }

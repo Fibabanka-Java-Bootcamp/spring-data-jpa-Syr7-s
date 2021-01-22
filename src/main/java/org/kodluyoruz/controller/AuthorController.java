@@ -21,15 +21,17 @@ public class AuthorController {
         if (author != null){
             System.out.println(author);
             return author.getName()+" named writer info was received.";
-        }else
-            return "Writer is not found";
+        }return "Writer is not found";
     }
 
     @RequestMapping(value = "/allAuthors",method = RequestMethod.GET)
     public String getAllAuthors(){
-        System.out.println("All writers are getting....");
         List<Author> authorList = authorService.getAllAuthors();
-        Arrays.stream(authorList.toArray()).forEach(System.out::println) ;
-        return "All writers have been brought.";
+        if (!authorList.isEmpty()){
+            System.out.println("All writers are getting....");
+            Arrays.stream(authorList.toArray()).forEach(System.out::println) ;
+            return "All writers have been brought.";
+        }return "AuthorList is empty.";
+
     }
 }
