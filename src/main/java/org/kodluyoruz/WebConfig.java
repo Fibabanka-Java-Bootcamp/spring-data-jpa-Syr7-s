@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -44,6 +45,15 @@ public class WebConfig implements WebMvcConfigurer{
 
         stringConverter.setSupportedMediaTypes(mediaTypeList);
         converters.add(stringConverter);
+    }
 
+    @Bean
+    public InternalResourceViewResolver jspViewResoler(){
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setViewClass(JstlView.class);
+        viewResolver.setPrefix("/WEB-INF/view/");
+        viewResolver.setSuffix(".jsp");
+        viewResolver.setContentType("text/html;charset=UTF-8");
+        return viewResolver;
     }
 }
