@@ -79,8 +79,14 @@ public class OrdersService {
             System.out.println("Musa adlı kullanıcının Kitap Siparisleri");
             System.out.println(orders1.getRegisteredOrderBook());
 
-
-
         }
+
+    }
+    public void newOrderBook(User user, Orders orders){
+        userRepo.save(user);
+        ordersRepo.save(orders);
+    }
+    public Orders getOrder(String userName){
+        return ordersRepo.findByUser_Name(userName);
     }
 }
