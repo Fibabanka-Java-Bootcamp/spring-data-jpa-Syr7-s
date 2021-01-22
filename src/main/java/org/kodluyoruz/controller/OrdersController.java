@@ -32,7 +32,7 @@ public class OrdersController {
     @RequestMapping(value = "/ordersAdd",method = RequestMethod.GET)
     public String newOrders(){
         ordersService.orderBookFromUser();
-        return "Siparis veriliyor.";
+        return "The order is being placed.";
     }
 
     @RequestMapping(value = "/orderBook",method = RequestMethod.GET)
@@ -60,9 +60,9 @@ public class OrdersController {
 
             ordersService.newOrderBook(user,orders);
 
-            return user.getName()+" adli kullanıcının siparisi var.";
+            return user.getName()+" named user have a order.";
         }else{
-            return "Siparis edilen kitap kayıtlarda yok";
+            return "Ordered books are not in the records.";
         }
     }
     @RequestMapping(value = "/{userName}", method = RequestMethod.GET)
@@ -70,16 +70,19 @@ public class OrdersController {
         Orders order = ordersService.getOrder(userName);
         if (order!=null){
             System.out.println(order);
-            return userName+" adli kullanının siparisi";
+            return userName+" named user order.";
         }else
-            return "Siparis bulunamadi.";
+            return "The order is not found";
     }
     @RequestMapping(value = "/allOrders",method = RequestMethod.GET)
     public String getAllOrders(){
         List<Orders> orders = ordersService.getAllOrders();
-        for (Orders order:orders) {
-            System.out.println(order);
-        }
-        return "Tum siparisler getirildi.";
+        if (orders !=null){
+            for (Orders order:orders) {
+                System.out.println(order);
+            }
+            return "All orders have been brought";
+        }return "Orders List is empty";
+
     }
 }
