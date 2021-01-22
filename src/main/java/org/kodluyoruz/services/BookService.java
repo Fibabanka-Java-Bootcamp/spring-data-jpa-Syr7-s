@@ -218,4 +218,8 @@ public class BookService {
         authorRepo.save(author2);
         bookRepo.save(b1);
     }
+
+    public List<Book> getAllBooks(){
+        return (List<Book>) bookRepo.findAll();
+    }
 }

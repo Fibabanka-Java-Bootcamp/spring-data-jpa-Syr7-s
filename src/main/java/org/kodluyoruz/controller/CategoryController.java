@@ -10,36 +10,45 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 import java.util.List;
+
 @RestController
 @RequestMapping("/api/category")
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping(value = "/categoryHome",method = RequestMethod.GET)
-    public String getCategoryHome(){
+    @RequestMapping(value = "/categoryHome", method = RequestMethod.GET)
+    public String getCategoryHome() {
         categoryService.categoryOperations();
         return "Category Operation is running";
     }
 
-    @RequestMapping(value = "/addCategory",method = RequestMethod.GET)
-    public String addCategory(){
+    @RequestMapping(value = "/addCategory", method = RequestMethod.GET)
+    public String addCategory() {
         categoryService.categoryAddToTheDatabase();
         return "New category was added";
     }
 
-    @RequestMapping(value = "/{name}",method = RequestMethod.GET)
-    public String getCategory(@PathVariable("name") String name){
+    @RequestMapping(value = "/{name}", method = RequestMethod.GET)
+    public String getCategory(@PathVariable("name") String name) {
         Category category = categoryService.getCategory(name);
-        System.out.println(category);
-        return category.getName()+" named category was received";
+        if (category != null) {
+            System.out.println(category);
+            return category.getName() + " named category was received";
+        }
+        return name+" named category is not found";
+
     }
 
-    @RequestMapping(value = "/allCategory",method = RequestMethod.GET)
-    public String getAllCategory(){
+    @RequestMapping(value = "/allCategory", method = RequestMethod.GET)
+    public String getAllCategory() {
         List<Category> categoryList = categoryService.getAllCategory();
         System.out.println("All categeries are getting.");
-        Arrays.stream(categoryList.toArray()).forEach(System.out::println);
-        return "All categories have been brought.";
+
+        if (categoryList != null) {
+            Arrays.stream(categoryList.toArray()).forEach(System.out::println);
+            return "All categories have been brought.";
+        }
+        return "CategoryList is empty";
     }
 }

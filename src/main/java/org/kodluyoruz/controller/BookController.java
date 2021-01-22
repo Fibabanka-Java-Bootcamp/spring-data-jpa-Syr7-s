@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.UUID;
-
+import java.util.List;
 @RestController
 @RequestMapping("/api/book")
 public class BookController {
@@ -26,7 +27,7 @@ public class BookController {
     @RequestMapping(value = "/bookHome",method = RequestMethod.GET)
     public String getBookHome(){
         bookService.bookOperation();
-        return "İlk kitap kayıtları olusturuldu.";
+        return "First book records were created.";
     }
 
     @RequestMapping(value = "/addBook",method = RequestMethod.GET)
@@ -55,13 +56,25 @@ public class BookController {
     @RequestMapping(value = "/{bookName}",method = RequestMethod.GET)
     public String getBookByBookName(@PathVariable("bookName") String bookName){
         Book book = bookService.getBookByBookName(bookName);
-        System.out.println(book.getName()+"\n"+book.getAuthors());
-        return book.getName()+" adlı kitap getirildi.";
+        if (book != null){
+            System.out.println(book.getName()+"\n"+book.getAuthors());
+            return book.getName()+" named book was received.";
+        }return "The writer is not found";
+
     }
 
     @RequestMapping(value = "/addNewBook",method = RequestMethod.GET)
     public String getNewBook(){
         bookService.oneBookIsMoreThanOneAuthor();
-        return "Bir kitabın birden fazla yazarı olabilir.";
+        return "A book can have more than one author.";
+    }
+    @RequestMapping(value = "/allBooks",method = RequestMethod.GET)
+    public String getAllBooks(){
+        List<Book> bookList = bookService.getAllBooks();
+        if (bookList != null) {
+            Arrays.stream(bookList.toArray()).forEach(System.out::println);
+            return "All books have been brought";
+        }return "BookList is emtpy";
+
     }
 }

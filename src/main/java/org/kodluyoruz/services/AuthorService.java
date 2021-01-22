@@ -10,10 +10,8 @@ import java.util.List;
 @Component
 public class AuthorService {
     private final AuthorRepo authorRepo;
-    private final BookRepo bookRepo;
-    public AuthorService(AuthorRepo authorRepo, BookRepo bookRepo) {
+    public AuthorService(AuthorRepo authorRepo) {
         this.authorRepo = authorRepo;
-        this.bookRepo = bookRepo;
     }
 
     public Author getAuthor(String authorName){

@@ -10,16 +10,16 @@ public class App {
         appContext.refresh();
 
         UserService userService = (UserService) appContext.getBean("userService");
-        userService.userOperations();
+        //userService.userOperations();
 
         CategoryService categoryService = (CategoryService) appContext.getBean("categoryService");
-        categoryService.categoryOperations();
+        //categoryService.categoryOperations();
 
         BookService bookService = (BookService) appContext.getBean("bookService");
-        bookService.bookOperation();
+        //bookService.bookOperation();
 
         OrdersService ordersService = (OrdersService) appContext.getBean("ordersService");
-        ordersService.orderOperations();
+       // ordersService.orderOperations();
 
         ordersService.orderBookFromUser();
         //  AuthorService authorService = (AuthorService) appContext.getBean("authorService");
