@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 @Component
 public class OrdersService {
@@ -72,8 +71,6 @@ public class OrdersService {
             orders.setTotal(25.00);
 
             ordersRepo.save(orders);
-
-            //System.out.println(orders);
 
             Orders orders1 = ordersRepo.findByUser_Name("Musa");
             System.out.println("Musa adlı kullanıcının Kitap Siparisleri");

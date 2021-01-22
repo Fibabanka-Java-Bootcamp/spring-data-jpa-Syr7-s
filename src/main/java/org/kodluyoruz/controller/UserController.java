@@ -16,22 +16,10 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
-    @Autowired
-    private CategoryService categoryService;
-    @Autowired
-    private BookService bookService;
-    @Autowired
-    private OrdersService ordersService;
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String getHomePage() {
         userService.userOperations();
-
-        //categoryService.categoryOperations()
-        //bookService.bookOperation();
-       // ordersService.orderOperations();
-
-        //ordersService.orderBookFromUser();
         return "Veritabanı Islemleri Yapıldı.";
     }
 

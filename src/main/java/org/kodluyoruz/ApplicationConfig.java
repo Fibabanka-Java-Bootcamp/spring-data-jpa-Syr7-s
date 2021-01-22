@@ -25,7 +25,7 @@ class ApplicationConfig {
     @Bean
     public DataSource dataSource() {
 
-      EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
+     EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         return builder.setType(EmbeddedDatabaseType.H2).build();
         /*MysqlDataSource dataSource=new MysqlDataSource();
         dataSource.setUser("root");
