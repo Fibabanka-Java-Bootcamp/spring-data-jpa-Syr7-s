@@ -27,15 +27,11 @@ public class UserController {
     public String getHomePage() {
         userService.userOperations();
 
-        //categoryService.categoryOperations();
+        //categoryService.categoryOperations()
+        //bookService.bookOperation();
+       // ordersService.orderOperations();
 
-
-        bookService.bookOperation();
-
-
-        ordersService.orderOperations();
-
-        ordersService.orderBookFromUser();
+        //ordersService.orderBookFromUser();
         return "Veritabanı Islemleri Yapıldı.";
     }
 

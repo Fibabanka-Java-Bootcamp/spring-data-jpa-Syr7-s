@@ -74,4 +74,12 @@ public class OrdersController {
         }else
             return "Siparis bulunamadi.";
     }
+    @RequestMapping(value = "/allOrders",method = RequestMethod.GET)
+    public String getAllOrders(){
+        List<Orders> orders = ordersService.getAllOrders();
+        for (Orders order:orders) {
+            System.out.println(order);
+        }
+        return "Tum siparisler getirildi.";
+    }
 }

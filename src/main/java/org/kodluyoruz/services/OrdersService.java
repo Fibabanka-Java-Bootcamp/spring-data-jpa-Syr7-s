@@ -89,4 +89,7 @@ public class OrdersService {
     public Orders getOrder(String userName){
         return ordersRepo.findByUser_Name(userName);
     }
+    public List<Orders> getAllOrders(){
+        return (List<Orders>) ordersRepo.findAll();
+    }
 }
