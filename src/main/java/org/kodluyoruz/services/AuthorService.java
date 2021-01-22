@@ -6,7 +6,7 @@ import org.kodluyoruz.repositories.AuthorRepo;
 import org.kodluyoruz.repositories.BookRepo;
 import org.springframework.stereotype.Component;
 
-
+import java.util.List;
 @Component
 public class AuthorService {
     private final AuthorRepo authorRepo;
@@ -18,5 +18,9 @@ public class AuthorService {
 
     public Author getAuthor(String authorName){
         return authorRepo.findAuthorByName(authorName);
+    }
+
+    public List<Author> getAllAuthors (){
+        return (List<Author>) authorRepo.findAll();
     }
 }

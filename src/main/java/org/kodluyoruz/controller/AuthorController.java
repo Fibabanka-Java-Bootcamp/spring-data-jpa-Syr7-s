@@ -5,6 +5,10 @@ import org.kodluyoruz.services.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
 @RestController
 @RequestMapping("/api/author")
 public class AuthorController {
@@ -19,5 +23,13 @@ public class AuthorController {
             return author.getName()+" adli yazarın bilgileri getirildi.";
         }else
             return "Yazar bulunamadi.";
+    }
+
+    @RequestMapping(value = "/allAuthors",method = RequestMethod.GET)
+    public String getAllAuthors(){
+        System.out.println("All writers are getting....");
+        List<Author> authorList = authorService.getAllAuthors();
+        Arrays.stream(authorList.toArray()).forEach(System.out::println) ;
+        return "Tum yazarlar getirildi.";
     }
 }
