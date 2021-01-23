@@ -2,7 +2,6 @@ package org.kodluyoruz.controller;
 
 import org.kodluyoruz.entities.Category;
 import org.kodluyoruz.services.CategoryService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -13,9 +12,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/category")
 public class CategoryController {
-   // @Autowired
+
     private final CategoryService categoryService;
-    public CategoryController(CategoryService categoryService){
+
+    public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
@@ -37,7 +37,8 @@ public class CategoryController {
         if (category != null) {
             System.out.println(category);
             return category.getName() + " named category was received";
-        }throw new ResponseStatusException(HttpStatus.NOT_FOUND, name+" named category is not found");
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, name + " named category is not found");
     }
 
     @GetMapping(value = "/categories")
@@ -47,6 +48,7 @@ public class CategoryController {
             System.out.println("All categories are getting.");
             Arrays.stream(categoryList.toArray()).forEach(System.out::println);
             return "All categories have been brought.";
-        }throw new ResponseStatusException(HttpStatus.NOT_FOUND,"CategoryList is empty");//return "CategoryList is empty";
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "CategoryList is empty");
     }
 }
