@@ -45,7 +45,7 @@ public class OrdersController {
     @GetMapping("/newOrder1")
     public String getOrderBook() {
         User user = new User();
-        user.setName("Timur");
+        user.setName("Ahmet");
 
         Address address = new Address();
         address.setStreet("Ataturk Street");

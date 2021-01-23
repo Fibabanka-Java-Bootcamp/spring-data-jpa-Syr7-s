@@ -51,7 +51,7 @@ public class OrdersService {
         if (book != null && book1 !=null){
             List<Book> books  = new ArrayList<>();
             User user = new User();
-            user.setName("Musa");
+            user.setName("Mehmet");
 
             Address address = new Address();
             address.setStreet("Palmiye Street");
@@ -72,8 +72,8 @@ public class OrdersService {
 
             ordersRepo.save(orders);
 
-            Orders orders1 = ordersRepo.findByUser_Name("Musa");
-            System.out.println("Musa adlı kullanıcının Kitap Siparisleri");
+            Orders orders1 = ordersRepo.findByUser_Name("Mehmet");
+            System.out.println("Mehmet adlı kullanıcının Kitap Siparisleri");
             System.out.println(orders1.getRegisteredOrderBook());
 
         }

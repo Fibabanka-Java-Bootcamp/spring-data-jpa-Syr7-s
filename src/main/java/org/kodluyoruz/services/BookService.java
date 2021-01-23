@@ -144,26 +144,6 @@ public class BookService {
         bookRepo.save(b3);
         bookRepo.save(b4);
 
-/*
-        Author authors = authorRepo.findAuthorByName("Orhan Kemal");
-        System.out.println("*************************\n" + authors.getName() + "\n" + authors.getRegisteredAuthorBook()
-                + "\n*************************");
-        System.out.println("******************Books***************************");
-        List<Book> books = (List<Book>) bookRepo.findAll();
-        for (Book b : books) {
-            System.out.println(b);
-        }
-        System.out.println("Kitap Adına Gore Arama");
-        Book bookByName = bookRepo.findBookByName("Karamazov Kardesler");
-
-        System.out.println(bookByName.getName() + " " + bookByName.getAuthors() + " " + bookByName.getCategory());
-
-        List<Category> categories = (List<Category>) categoryRepo.findAll();
-        System.out.println("Categories");
-        for (Category c : categories) {
-            System.out.println(c.getName());
-        }
-        */
     }
 
     public void addBook(Author author, Book book) {

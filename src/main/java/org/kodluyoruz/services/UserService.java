@@ -22,7 +22,7 @@ public class UserService {
         address.setStreet("Gazo sokak");
         address.setNumber("7");
         address.setCity("Istanbul");
-
+        address.setZipcode(1);
         u.setAddress(address);
 
         repo.save(u);
@@ -34,11 +34,11 @@ public class UserService {
 
     public void userAddToTheDatabase(){
         User u = new User();
-        u.setName("Fatih");
+        u.setName("Ali");
 
         Address address = new Address();
         address.setStreet("Adnan Kahveci Sokagi");
-        address.setNumber("57");
+        address.setNumber("5");
         address.setCity("Istanbul");
         address.setZipcode(12);
 
