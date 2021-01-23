@@ -7,3 +7,5 @@ JPA anotasyonlarını cascade ve fecth stratejilerini uygun şekilde kullanını
 Ayrıca kitap ismine göre ve yazar ismine göre arama, kullanıcının sipariş bilgilerini gösterme gibi temel sorgular eklenmelidir.
 
 Odev deadline : 24.01.2021 saat 00:00
+
+## Proje çıktısını ve gerekli bilgiler için readInfo yu okuyabilirsiniz.
