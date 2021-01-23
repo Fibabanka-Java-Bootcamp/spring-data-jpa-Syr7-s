@@ -1,9 +1,7 @@
 package org.kodluyoruz.services;
 
 import org.kodluyoruz.entities.Author;
-import org.kodluyoruz.entities.Book;
 import org.kodluyoruz.repositories.AuthorRepo;
-import org.kodluyoruz.repositories.BookRepo;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

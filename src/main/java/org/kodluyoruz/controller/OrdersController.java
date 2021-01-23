@@ -6,7 +6,6 @@ import org.kodluyoruz.entities.Orders;
 import org.kodluyoruz.entities.User;
 import org.kodluyoruz.services.BookService;
 import org.kodluyoruz.services.OrdersService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
