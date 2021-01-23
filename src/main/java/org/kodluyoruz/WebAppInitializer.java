@@ -15,6 +15,10 @@ import javax.servlet.ServletRegistration;
 @Configuration
 public class WebAppInitializer implements WebApplicationInitializer {
 
+    /*
+    * Spring 4+ ile birlikte WebApplicationInitializer arayuzu implemente edilerek override edilen onStartup metodunda
+    * Dispatcher Servlet tanımlanabilmektedir.
+    * */
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext context = getContext();
@@ -24,6 +28,12 @@ public class WebAppInitializer implements WebApplicationInitializer {
         dispatcherServlet.setLoadOnStartup(1);
         dispatcherServlet.addMapping("/");
 
+        /*
+        * WebFilter belirtilen HTTP isteklerinin tamamına uygulanır.
+        * Dispatcher Servlet den once isleme alınır.
+        * Genelde karakter kodlaması ve sıkıstırma gibi temel islemler icin kullanılır.
+        * Spring4+ icin tanımı asagıdaki gibidir.
+        * */
         CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
         characterEncodingFilter.setEncoding("UTF-8");
         characterEncodingFilter.setForceEncoding(true);
