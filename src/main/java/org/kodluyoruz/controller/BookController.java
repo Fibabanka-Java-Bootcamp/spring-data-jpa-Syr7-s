@@ -6,10 +6,12 @@ import org.kodluyoruz.entities.Category;
 import org.kodluyoruz.services.BookService;
 import org.kodluyoruz.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -60,22 +62,22 @@ public class BookController {
             System.out.println("All books are getting.");
             System.out.println(book.getName()+"\n"+book.getAuthors());
             return book.getName()+" named book was received.";
-        }return "The writer is not found";
+        }throw new ResponseStatusException(HttpStatus.NOT_FOUND,"The book is not found.");//return "The writer is not found";
 
     }
 
-    @RequestMapping(value = "/addNewBook",method = RequestMethod.GET)
+    @RequestMapping(value = "/newBook",method = RequestMethod.GET)
     public String getNewBook(){
         bookService.oneBookIsMoreThanOneAuthor();
         return "A book can have more than one author.";
     }
-    @RequestMapping(value = "/allBooks",method = RequestMethod.GET)
+    @RequestMapping(value = "/books",method = RequestMethod.GET)
     public String getAllBooks(){
         List<Book> bookList = bookService.getAllBooks();
         if (!bookList.isEmpty()) {
             Arrays.stream(bookList.toArray()).forEach(System.out::println);
             return "All books have been brought.";
-        }return "BookList is empty.";
+        }throw new ResponseStatusException(HttpStatus.NOT_FOUND,"BookList is empty.");//return "BookList is empty.";
 
     }
 }
