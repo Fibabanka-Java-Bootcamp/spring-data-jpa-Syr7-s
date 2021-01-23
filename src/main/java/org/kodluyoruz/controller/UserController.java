@@ -6,8 +6,10 @@ import org.kodluyoruz.services.CategoryService;
 import org.kodluyoruz.services.OrdersService;
 import org.kodluyoruz.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,25 +32,24 @@ public class UserController {
         return "User was added to the database.";
     }
 
-    @RequestMapping(value = "/userGet/{name}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{name}", method = RequestMethod.GET)
     private String getUserByName(@PathVariable("name") String name) {
         User user = userService.getUser(name);
         if (user != null) {
             System.out.println(user);
             return name + " named user was received.";
-        }
-        return name + " named user is not found.";
+        }throw new ResponseStatusException(HttpStatus.NOT_FOUND,name+" named user is not found");//return name + " named user is not found.";
 
     }
 
-    @RequestMapping(value = "/allUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
     private String getAllUser() {
         List<User> userList = userService.getAllUsers();
         if (!userList.isEmpty()) {
             Arrays.stream(userList.toArray()).forEach(System.out::println);
             return "All users have been brought";
-        }
-        return "UserList is empty";
+        }throw new ResponseStatusException(HttpStatus.NOT_FOUND,"UserList is empty");
+        //return "UserList is empty";
 
     }
 }
