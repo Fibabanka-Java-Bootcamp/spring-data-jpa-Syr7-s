@@ -1,13 +1,8 @@
 package org.kodluyoruz.controller;
 
 import org.kodluyoruz.entities.User;
-import org.kodluyoruz.services.BookService;
-import org.kodluyoruz.services.CategoryService;
-import org.kodluyoruz.services.OrdersService;
 import org.kodluyoruz.services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -24,21 +19,18 @@ public class UserController {
         this.userService = userService;
     }
 
-   // @RequestMapping(value = "/home", method = RequestMethod.GET)
     @GetMapping("/home")
     public String getHomePage() {
         userService.userOperations();
         return "First user record was created.";
     }
 
-   // @RequestMapping(value = "/addUser", method = RequestMethod.GET)
     @GetMapping("/newUser")
     private String addUser() {
         userService.userAddToTheDatabase();
         return "User was added to the database.";
     }
 
-    //@RequestMapping(value = "/{name}", method = RequestMethod.GET)
     @GetMapping
     private String getUserByName(@RequestParam("name") String name) {
         User user = userService.getUser(name);
@@ -50,7 +42,6 @@ public class UserController {
 
     }
 
-    //@RequestMapping(value = "/users", method = RequestMethod.GET)
     @GetMapping("/users")
     private String getAllUser() {
         List<User> userList = userService.getAllUsers();
@@ -59,7 +50,5 @@ public class UserController {
             return "All users have been brought";
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "UserList is empty");
-
-
     }
 }
