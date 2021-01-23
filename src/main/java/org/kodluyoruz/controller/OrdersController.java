@@ -30,21 +30,18 @@ public class OrdersController {
         this.bookService = bookService;
     }
 
-    //@RequestMapping(value = "/ordersHome", method = RequestMethod.GET)
     @GetMapping("/home")
     public String getOrdersHome() {
         ordersService.orderOperations();
         return "Orders is getting.";
     }
 
-    //@RequestMapping(value = "/ordersAdd", method = RequestMethod.GET)
     @GetMapping("/newOrder")
     public String newOrders() {
         ordersService.orderBookFromUser();
         return "The order is being placed.";
     }
 
-    //@RequestMapping(value = "/orderBook", method = RequestMethod.GET)
     @GetMapping("/newOrder1")
     public String getOrderBook() {
         User user = new User();
