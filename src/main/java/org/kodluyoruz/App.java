@@ -8,23 +8,6 @@ public class App {
         AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
         appContext.scan("org.kodluyoruz");
         appContext.refresh();
-
-        UserService userService = (UserService) appContext.getBean("userService");
-        //userService.userOperations();
-
-        CategoryService categoryService = (CategoryService) appContext.getBean("categoryService");
-        //categoryService.categoryOperations();
-
-        BookService bookService = (BookService) appContext.getBean("bookService");
-        //bookService.bookOperation();
-
-        OrdersService ordersService = (OrdersService) appContext.getBean("ordersService");
-       // ordersService.orderOperations();
-
-        ordersService.orderBookFromUser();
-        //  AuthorService authorService = (AuthorService) appContext.getBean("authorService");
-        //  authorService.authorOperations();
-
         appContext.close();
     }
 }
