@@ -7,10 +7,7 @@ import org.kodluyoruz.services.BookService;
 import org.kodluyoruz.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
@@ -20,25 +17,28 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/book")
 public class BookController {
-    @Autowired
-    private BookService bookService;
 
-    @Autowired
-    private CategoryService categoryService;
+    private final BookService bookService;
 
-    @RequestMapping(value = "/bookHome",method = RequestMethod.GET)
+    private final CategoryService categoryService;
+
+    public BookController(BookService bookService, CategoryService categoryService) {
+        this.bookService = bookService;
+        this.categoryService = categoryService;
+    }
+
+    @GetMapping("/home")
     public String getBookHome(){
         bookService.bookOperation();
         return "First book records were created.";
     }
 
-    @RequestMapping(value = "/addBook",method = RequestMethod.GET)
+    @GetMapping("/newBook")
     public String addBook(){
         Author author = new Author();
         author.setName("Charlotte Bronte");
 
         Category category = categoryService.getCategory("Novel");
-        //String categoryName = category.getName();
 
         Book book = new Book();
         book.setIsbn(UUID.randomUUID().toString());
@@ -55,29 +55,30 @@ public class BookController {
         return "Book is save";
     }
 
-    @RequestMapping(value = "/{bookName}",method = RequestMethod.GET)
-    public String getBookByBookName(@PathVariable("bookName") String bookName){
+    @GetMapping()
+    public String getBookByBookName(@RequestParam("bookName") String bookName){
         Book book = bookService.getBookByBookName(bookName);
         if (book != null){
             System.out.println("All books are getting.");
             System.out.println(book.getName()+"\n"+book.getAuthors());
             return book.getName()+" named book was received.";
-        }throw new ResponseStatusException(HttpStatus.NOT_FOUND,"The book is not found.");//return "The writer is not found";
+        }throw new ResponseStatusException(HttpStatus.NOT_FOUND,"The book is not found.");
 
     }
 
-    @RequestMapping(value = "/newBook",method = RequestMethod.GET)
+    @GetMapping("/newBook1")
     public String getNewBook(){
         bookService.oneBookIsMoreThanOneAuthor();
         return "A book can have more than one author.";
     }
-    @RequestMapping(value = "/books",method = RequestMethod.GET)
+
+    @GetMapping("/books")
     public String getAllBooks(){
         List<Book> bookList = bookService.getAllBooks();
         if (!bookList.isEmpty()) {
             Arrays.stream(bookList.toArray()).forEach(System.out::println);
             return "All books have been brought.";
-        }throw new ResponseStatusException(HttpStatus.NOT_FOUND,"BookList is empty.");//return "BookList is empty.";
+        }throw new ResponseStatusException(HttpStatus.NOT_FOUND,"BookList is empty.");
 
     }
 }
