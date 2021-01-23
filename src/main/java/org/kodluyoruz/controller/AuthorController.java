@@ -3,7 +3,9 @@ package org.kodluyoruz.controller;
 import org.kodluyoruz.entities.Author;
 import org.kodluyoruz.services.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,17 +23,17 @@ public class AuthorController {
         if (author != null){
             System.out.println(author);
             return author.getName()+" named writer info was received.";
-        }return "Writer is not found";
+        }throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Writer is not found");//return "Writer is not found";
     }
 
-    @RequestMapping(value = "/allAuthors",method = RequestMethod.GET)
+    @RequestMapping(value = "/authors",method = RequestMethod.GET)
     public String getAllAuthors(){
         List<Author> authorList = authorService.getAllAuthors();
         if (!authorList.isEmpty()){
             System.out.println("All writers are getting....");
             Arrays.stream(authorList.toArray()).forEach(System.out::println) ;
             return "All writers have been brought.";
-        }return "AuthorList is empty.";
+        }throw new ResponseStatusException(HttpStatus.NOT_FOUND,"AuthorList is empty");//return "AuthorList is empty.";
 
     }
 }
