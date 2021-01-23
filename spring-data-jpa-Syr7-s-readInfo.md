@@ -1,6 +1,6 @@
 
 
-	## Spring Data JPA kullanarak veritabanı işlemleri
+##Spring Data JPA kullanarak veritabanı işlemleri
 
 ​	Bu haftaki ödevde verilen tabanı tasarımını tasarımına uygun entityler yaratılıp aralarındaki işlemler de sağlandıktan sonra kitap, yazar, sipariş ve kullanıcı kayıtları kullanılarak işlemler yapıldı. Bunun yanında da Spring Framework ve Apache Tomcat kullanılarak uygulama ayağa kaldırıldı ve istekler yapılarak kayıtlar oluşturulmaya ve bir dizi işlem yapılmaya çalışıldı.
 
