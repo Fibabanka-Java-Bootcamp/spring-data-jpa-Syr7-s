@@ -17,39 +17,49 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
-    @Autowired
-    private UserService userService;
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+   // @RequestMapping(value = "/home", method = RequestMethod.GET)
+    @GetMapping("/home")
     public String getHomePage() {
         userService.userOperations();
         return "First user record was created.";
     }
 
-    @RequestMapping(value = "/addUser", method = RequestMethod.GET)
+   // @RequestMapping(value = "/addUser", method = RequestMethod.GET)
+    @GetMapping("/newUser")
     private String addUser() {
         userService.userAddToTheDatabase();
         return "User was added to the database.";
     }
 
-    @RequestMapping(value = "/{name}", method = RequestMethod.GET)
-    private String getUserByName(@PathVariable("name") String name) {
+    //@RequestMapping(value = "/{name}", method = RequestMethod.GET)
+    @GetMapping
+    private String getUserByName(@RequestParam("name") String name) {
         User user = userService.getUser(name);
         if (user != null) {
             System.out.println(user);
             return name + " named user was received.";
-        }throw new ResponseStatusException(HttpStatus.NOT_FOUND,name+" named user is not found");//return name + " named user is not found.";
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, name + " named user is not found");
 
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    //@RequestMapping(value = "/users", method = RequestMethod.GET)
+    @GetMapping("/users")
     private String getAllUser() {
         List<User> userList = userService.getAllUsers();
         if (!userList.isEmpty()) {
             Arrays.stream(userList.toArray()).forEach(System.out::println);
             return "All users have been brought";
-        }throw new ResponseStatusException(HttpStatus.NOT_FOUND,"UserList is empty");
-        //return "UserList is empty";
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "UserList is empty");
+
 
     }
 }
