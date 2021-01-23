@@ -25,7 +25,7 @@ public class AuthorController {
         if (author != null){
             System.out.println(author);
             return author.getName()+" named writer info was received.";
-        }throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Writer is not found");//return "Writer is not found";
+        }throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Writer is not found");
     }
 
     @GetMapping("/authors")
